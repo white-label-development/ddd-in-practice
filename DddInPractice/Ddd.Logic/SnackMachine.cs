@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ddd.Logic
 {
-    public sealed class SnackMachine
+    public sealed class SnackMachine: Entity
     {
         /*
          * Snack Machine:
