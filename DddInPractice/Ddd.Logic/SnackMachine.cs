@@ -8,7 +8,13 @@ namespace Ddd.Logic
 {
     public sealed class SnackMachine
     {
-        //sealed - least few privilege.
+        /*
+         * Snack Machine:
+            Insert money into the machine
+            Return the money back
+            Buy a snack
+        */
+        //sealed = for least privilege.
 
         public int OneCentCount { get; private set; }
         public int TenCentCount { get; private set; }
@@ -17,5 +23,50 @@ namespace Ddd.Logic
         public int FiveDollarCount { get; private set; }
         public int TwentyDollarCount { get; private set; }
 
+
+        public int OneCentCountInTransaction { get; private set; }
+        public int TenCentCountInTransaction { get; private set; }
+        public int QuarterCountInTransaction { get; private set; }
+        public int OneDollarCountInTransaction { get; private set; }
+        public int FiveDollarCountInTransaction { get; private set; }
+        public int TwentyDollarCountInTransaction { get; private set; }
+
+        public void InsertMoney(int oneCentCount, int tenCentCount, int quarterCount, int oneDollarCount, int fiveDollarCount, int twentyDollarCount)
+        {
+            //OneCentCount += oneCentCount; if we do this we don't know what money the user put in for when they ask for a return via ReturnMoney, so refactored to
+            OneCentCountInTransaction += oneCentCount;
+            TenCentCountInTransaction += tenCentCount;
+            QuarterCountInTransaction += quarterCount;
+            OneDollarCountInTransaction += oneDollarCount;
+            FiveDollarCountInTransaction += fiveDollarCount;
+            TwentyDollarCountInTransaction += twentyDollarCount;
+        }
+
+        public void ReturnMoney()
+        {
+            OneCentCountInTransaction = 0;
+            TenCentCountInTransaction = 0;
+            QuarterCountInTransaction = 0;
+            OneDollarCountInTransaction = 0;
+            FiveDollarCountInTransaction = 0;
+            TwentyDollarCountInTransaction = 0;
+        }
+
+        public void BuySnack()
+        {
+            OneCentCount += OneCentCountInTransaction;
+            TenCentCount += TenCentCountInTransaction;
+            QuarterCount += QuarterCountInTransaction;
+            OneDollarCount += OneDollarCountInTransaction;
+            FiveDollarCount += FiveDollarCountInTransaction;
+            TwentyDollarCount += TwentyDollarCountInTransaction;
+
+            OneCentCountInTransaction = 0;
+            TenCentCountInTransaction = 0;
+            QuarterCountInTransaction = 0;
+            OneDollarCountInTransaction = 0;
+            FiveDollarCountInTransaction = 0;
+            TwentyDollarCountInTransaction = 0;
+        }
     }
 }
