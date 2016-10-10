@@ -14,7 +14,14 @@ namespace Ddd.Logic
             Return the money back
             Buy a snack
         */
+
         //sealed = for least privilege.
+
+        /*
+            * started with core domain
+            * start with a single context: don't introduce several bounded contexts upfront. introduce new conexts only when complexity forces it.
+            * always look for abstractions
+            */
 
 
         public Money MoneyInside { get; private set; }
