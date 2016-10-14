@@ -8,6 +8,17 @@ namespace Ddd.Logic
 {
     public sealed class Money: ValueObject<Money>
     {
+        //saves consumers having to use new Money(0,0,0,0,0,0)
+        public static readonly  Money None = new Money(0,0,0,0,0,0);
+
+        //following on fro the above 'helper'
+        public static readonly Money Cent = new Money(1, 0, 0, 0, 0, 0);
+        public static readonly Money TenCent = new Money(0, 1, 0, 0, 0, 0);
+        public static readonly Money Quarter = new Money(0, 0, 1, 0, 0, 0);
+        public static readonly Money Dollar = new Money(0, 0, 0, 1, 0, 0);
+        public static readonly Money FiveDollar = new Money(0, 0, 0, 0, 1, 0);
+        public static readonly Money TwentyDollar = new Money(0, 0, 0, 0, 0, 1);
+
         public int OneCentCount { get; }
         public int TenCentCount { get;  }
         public int QuarterCount { get;  }
