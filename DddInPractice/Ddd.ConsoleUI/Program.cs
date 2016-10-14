@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ddd.UI
+namespace Ddd.ConsoleUI
 {
-    public class SnackMachineViewModel :ViewModel
+    class Program
     {
-        //public override string Caption => "Snack Machine";
+        static void Main(string[] args)
+        {
+        }
     }
 }

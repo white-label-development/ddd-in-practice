@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\CustomWindow.xaml.cs">
+      <DependentUpon>CustomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DialogService.cs" />
+    <Page Include="Common\CustomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SnackMachineViewModel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Common\ViewModel.cs" />
     <Compile Include="SnackMachineViewModel.cs" />
     <Compile Include="SnackMachineViewModel.xaml.cs">
       <DependentUpon>SnackMachineViewModel.xaml</DependentUpon>
@@ -96,10 +105,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Images\" />
-    <Folder Include="Utils\" />
+    <Resource Include="Images\10c.png" />
+    <Resource Include="Images\1c.png" />
+    <Resource Include="Images\1d.png" />
+    <Resource Include="Images\20d.png" />
+    <Resource Include="Images\25c.png" />
+    <Resource Include="Images\5d.png" />
+    <Resource Include="Images\Chocolate.png" />
+    <Resource Include="Images\Gum.png" />
+    <Resource Include="Images\Icon.png" />
+    <Resource Include="Images\Soda.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
