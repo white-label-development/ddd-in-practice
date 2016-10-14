@@ -19,6 +19,8 @@ namespace Ddd.ConsoleUI
             if (ReturnMoney()) return;
 
             Console.WriteLine("Choose Snack...");
+            BuySnack();
+
 
         }
 
@@ -78,6 +80,14 @@ namespace Ddd.ConsoleUI
                 return true;
             }
             return false;
+        }
+
+        private void BuySnack()
+        {
+            _snackMachine.BuySnack();
+            Console.WriteLine("Snack Bought. Thank you.");
+            Console.WriteLine("Money inserted: " + _snackMachine.MoneyInTransaction.Amount);
+            Console.WriteLine("Money inside: " + _snackMachine.MoneyInside.Amount);
         }
     }
 }
