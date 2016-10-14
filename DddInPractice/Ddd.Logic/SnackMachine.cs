@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Ddd.Logic.Money;
 
 namespace Ddd.Logic
 {
@@ -27,33 +28,33 @@ namespace Ddd.Logic
 
         public SnackMachine()
         {
-            MoneyInside = Money.None;
-            MoneyInTransaction = Money.None;
+            MoneyInside = None;
+            MoneyInTransaction = None;
         }
 
 
         public Money MoneyInside { get; private set; }
         public Money MoneyInTransaction { get; private set; }
        
-
-
    
-
         public void InsertMoney(Money money)
         {
+            Money[] coinsAndNotes = {Cent, TenCent, Quarter, Dollar, FiveDollar, TwentyDollar}; //what this will accept
+            if(!coinsAndNotes.Contains(money)) throw new InvalidOperationException();
+
             MoneyInTransaction += money;
         }
 
         public void ReturnMoney()
         {
             //MoneyInTransaction.Clear() - don't as this violates the immutability of the ValueObject.
-            MoneyInTransaction = Money.None; ; //overwrite instead.
+            MoneyInTransaction = None; ; //overwrite instead.
         }
 
         public void BuySnack()
         {
-            MoneyInTransaction += MoneyInTransaction;
-            //MoneyInTransaction = 0;
+            MoneyInside += MoneyInTransaction;
+            MoneyInTransaction = None;
         }
     }
 }
