@@ -24,6 +24,14 @@ namespace Ddd.Logic
             */
 
 
+
+        public SnackMachine()
+        {
+            MoneyInside = new Money(0,0,0,0,0,0);
+            MoneyInTransaction = new Money(0, 0, 0, 0, 0, 0);
+        }
+
+
         public Money MoneyInside { get; private set; }
         public Money MoneyInTransaction { get; private set; }
        
@@ -38,7 +46,8 @@ namespace Ddd.Logic
 
         public void ReturnMoney()
         {
-            //MoneyInTransaction = 0; come back to this
+            //MoneyInTransaction.Clear() - don't as this violates the immutability of the ValueObject.
+            MoneyInTransaction = new Money(0, 0, 0, 0, 0, 0); //overwrite instead.
         }
 
         public void BuySnack()
