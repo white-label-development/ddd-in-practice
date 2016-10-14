@@ -10,6 +10,13 @@ namespace Ddd.ConsoleUI
     {
         static void Main(string[] args)
         {
+
+            var snackMachine = new SnackMachineView();
+
+            
+
+            Console.ReadLine();
+            Console.WriteLine("Shutting Down...");
         }
     }
 }
