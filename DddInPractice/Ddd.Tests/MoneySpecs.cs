@@ -60,7 +60,7 @@ namespace Ddd.Tests
         [InlineData(0, 0, 0, 0, 0, -6)]
         public void Cannot_create_money_with_negative_value(int oneCentCount, int tenCentCount, int quarterCount, int oneDollarCount, int fiveDollarCount, int twentyDollarCount)
         {
-            // Money money = new Money( oneCentCount,  tenCentCount,  quarterCount,  oneDollarCount,  fiveDollarCount,  twentyDollarCount);
+            
             Action action = () => new Money(oneCentCount, tenCentCount, quarterCount, oneDollarCount, fiveDollarCount, twentyDollarCount);
             action.ShouldThrow<InvalidOperationException>();
         }
