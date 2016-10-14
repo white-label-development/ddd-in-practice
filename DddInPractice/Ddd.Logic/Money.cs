@@ -8,21 +8,40 @@ namespace Ddd.Logic
 {
     public sealed class Money: ValueObject<Money>
     {
-        public int OneCentCount { get; private set; }
-        public int TenCentCount { get; private set; }
-        public int QuarterCount { get; private set; }
-        public int OneDollarCount { get; private set; }
-        public int FiveDollarCount { get; private set; }
-        public int TwentyDollarCount { get; private set; }
+        public int OneCentCount { get; }
+        public int TenCentCount { get;  }
+        public int QuarterCount { get;  }
+        public int OneDollarCount { get;  }
+        public int FiveDollarCount { get;  }
+        public int TwentyDollarCount { get; }
+
+        //C#6 Expression Body Members
+        public Decimal Amount =>
+            OneCentCount * 0.01M +
+            TenCentCount * 0.1M +
+            QuarterCount * 0.25M +
+            OneDollarCount * 1 +
+            FiveDollarCount * 5 +
+            TwentyDollarCount * 20;
+       
 
         public Money(int oneCentCount, int tenCentCount, int quarterCount, int oneDollarCount, int fiveDollarCount, int twentyDollarCount)
         {
+            if (oneCentCount < 0) throw new InvalidOperationException();
+            if (tenCentCount < 0) throw new InvalidOperationException();
+            if (quarterCount < 0) throw new InvalidOperationException();
+            if (oneDollarCount < 0) throw new InvalidOperationException();
+            if (fiveDollarCount < 0) throw new InvalidOperationException();
+            if (twentyDollarCount < 0) throw new InvalidOperationException();
+
             OneCentCount += oneCentCount;
             TenCentCount += tenCentCount;
             QuarterCount += quarterCount;
             OneDollarCount += oneDollarCount;
             FiveDollarCount += fiveDollarCount;
             TwentyDollarCount += twentyDollarCount;
+
+            
         }
 
         public static Money operator +(Money money1, Money money2)
