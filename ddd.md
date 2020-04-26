@@ -40,3 +40,25 @@ CQRS is great, apparantly.
 TODO: explore "service boundaries" on youtube
 
 TODO: "Building Microservices" by Sam Newman, is essentially DDD the good parts
+
+
+## Going Crazy with CQRS
+
+Bounded Context containing ag.roots of Entity && Value Object
+
+Separate Read/Write Models. 
+
+Leter in DDD, Domain Events were added as an afterthought, but this is a core piece of CQRS
+
+Event Oriented. 
+
+CQRS Summary: 
++ UI -> WriteModel (receive command, validations)
++ WriteModel emit Events (to Read Model)
++ ReadModel -> UI
+
+Read and write joined by events (and ui)
+
+slide here xxxxxxxxxxxxxxx
+
+@25:12 - not a great talk :(
